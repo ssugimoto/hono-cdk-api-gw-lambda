@@ -1,0 +1,21 @@
+version: '3.5'
+services:
+  cdk:
+    build: 
+      context: ./cdk-container
+      dockerfile: ./Dockerfile
+    tty: true
+    stdin_open: true
+    working_dir: /app
+    volumes:
+      - .:/app
+    container_name: cdk-node20-hono-2
+    env_file:
+      - .env
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+#volumes:
+
